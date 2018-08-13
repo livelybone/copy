@@ -1,0 +1,27 @@
+{
+  "name": "@livelybone/copy",
+  "version": "1.0.0",
+  "description": "About clipboard copy, Object simple&deep copy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livelybone/copy.git"
+  },
+  "keywords": [
+    "clipboard",
+    "copy",
+    "object",
+    "deep",
+    "copy",
+    "deep"
+  ],
+  "author": "livelybone (lzp)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/livelybone/copy/issues"
+  },
+  "homepage": "https://github.com/livelybone/copy#readme"
+}
