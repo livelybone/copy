@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/copy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "About clipboard copy, Object simple&deep copy",
   "main": "index.js",
   "scripts": {
