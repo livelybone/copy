@@ -7,7 +7,7 @@ function unExpectedObjType(obj) {
     || obj instanceof File
     || obj instanceof Date
     || obj instanceof Error
-    || obj instanceof RegExp;
+    || obj instanceof RegExp
 }
 
 /**
@@ -16,12 +16,12 @@ function unExpectedObjType(obj) {
  * @param {Array} tParents - Target parents
  * */
 function isCircularStructure(obj, tParents) {
-  var p = tParents || [];
+  var p = tParents || []
   var index = Object.keys(p)
     .find(function (i) {
       return tParents[i] === obj
-    });
-  return index !== undefined ? { index: index } : undefined;
+    })
+  return index !== undefined ? { index: index } : undefined
 }
 
 /**
@@ -32,32 +32,32 @@ function isCircularStructure(obj, tParents) {
  * @param {Array} curParents - Current result parents
  * */
 function copyFn(result, target, tParents, curParents) {
-  var a = [target];
-  var curA = [result];
-  var p = tParents ? [].concat(tParents).concat(a) : a;
-  var curP = tParents ? [].concat(curParents).concat(curA) : curA;
+  var a = [target]
+  var curA = [result]
+  var p = tParents ? [].concat(tParents).concat(a) : a
+  var curP = tParents ? [].concat(curParents).concat(curA) : curA
   Object.keys(target).forEach(function (key) {
-    var isCircular = isCircularStructure(target[key], p);
+    var isCircular = isCircularStructure(target[key], p)
     if (isCircular) {
-      result[key] = curP[isCircular.index];
+      result[key] = curP[isCircular.index]
     } else {
-      result[key] = target[key];
+      result[key] = target[key]
       if (typeof target[key] === 'object' && !unExpectedObjType(target[key])) {
-        var Constructor = target[key].constructor;
-        result[key] = new Constructor();
-        copyFn(result[key], target[key], p);
+        var Constructor = target[key].constructor
+        result[key] = new Constructor()
+        copyFn(result[key], target[key], p)
       }
     }
-  });
+  })
 }
 
-module.exports = function deepCopy(obj) {
-  if (typeof obj !== 'object' || unExpectedObjType(obj)) return obj;
+export default function (obj) {
+  if (typeof obj !== 'object' || unExpectedObjType(obj)) return obj
 
   if (typeof obj === 'object') {
-    var copy = new obj.constructor();
-    copyFn(copy, obj);
-    return copy;
+    var copy = new obj.constructor()
+    copyFn(copy, obj)
+    return copy
   }
-  throw new Error('Unable to copy obj! Its type isn\'t supported.');
-};
+  throw new Error('Unable to copy obj! Its type isn\'t supported.')
+}

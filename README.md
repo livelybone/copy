@@ -15,11 +15,11 @@ npm i -S @livelybone/copy
 ## Import
 ```js
 // import all
-import {copyDom,copyText,simpleCopy,deepCopy} from '@livelybone/copy';
+import {copyDom,copyText,objectSimpleCopy,objectDeepCopy} from '@livelybone/copy';
 
 // import what you need
-import copyDom from '@livelybone/copy/lb/copy-dom';
-import copyText from '@livelybone/copy/lb/copy-text';
-import deepCopy from '@livelybone/copy/lb/object-deep-copy';
-import simpleCopy from '@livelybone/copy/lb/object-simple-copy';
+import copyDom from '@livelybone/copy/lib/umd/copyDom';
+import copyText from '@livelybone/copy/lib/umd/copyText';
+import objectDeepCopy from '@livelybone/copy/lib/umd/objectDeepCopy';
+import objectSimpleCopy from '@livelybone/copy/lib/umd/objectSimpleCopy';
 ```
