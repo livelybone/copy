@@ -1,17 +1,15 @@
 import fs from 'fs'
 import path from 'path'
 import { uglify } from 'rollup-plugin-uglify'
-// import resolve from 'rollup-plugin-node-resolve'
-// import commonjs from 'rollup-plugin-commonjs'
 
 const formats = ['es', 'umd']
 
 function getEntries() {
-  const reg = /\.js$/
+  const reg = /^(?!utils)\w+\.js$/
   return fs.readdirSync(path.resolve(__dirname, './src'))
     .filter(filename => reg.test(filename) && !fs.statSync(path.resolve(__dirname, './src', filename)).isDirectory())
     .map(filename => ({
-      name: filename.replace(reg, ''),
+      name: filename.replace(/\.js$/, ''),
       filename: path.resolve(__dirname, './src', filename),
       formats: formats.filter(f => f !== 'es'),
     }))
@@ -26,7 +24,8 @@ const conf = entry => ({
   })),
   plugins: [
     (entry.needUglify !== false && uglify()),
-  ]
+  ],
+  context: 'this',
 })
 
 export default [

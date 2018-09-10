@@ -1,14 +1,4 @@
-/**
- * @description If param obj is expected that can be copied
- * */
-function unExpectedObjType(obj) {
-  return obj === null
-    || obj instanceof FileList
-    || obj instanceof File
-    || obj instanceof Date
-    || obj instanceof Error
-    || obj instanceof RegExp
-}
+import { expectedObjType } from './utils'
 
 /**
  * @description Returns the start dimension of the nested loop
@@ -42,7 +32,7 @@ function copyFn(result, target, tParents, curParents) {
       result[key] = curP[isCircular.index]
     } else {
       result[key] = target[key]
-      if (typeof target[key] === 'object' && !unExpectedObjType(target[key])) {
+      if (expectedObjType(target[key])) {
         var Constructor = target[key].constructor
         result[key] = new Constructor()
         copyFn(result[key], target[key], p)
@@ -52,7 +42,7 @@ function copyFn(result, target, tParents, curParents) {
 }
 
 export default function (obj) {
-  if (typeof obj !== 'object' || unExpectedObjType(obj)) return obj
+  if (!expectedObjType(obj)) return obj
 
   if (typeof obj === 'object') {
     var copy = new obj.constructor()
