@@ -1,12 +1,12 @@
 {
   "name": "@livelybone/copy",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "About clipboard copy, Object simple&deep copy",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
   "unpkg": "./lib/umd/index.js",
   "scripts": {
-    "build": "rimraf ./lib && rollup -c",
+    "build": "rimraf ./lib && cross-env NODE_ENV=production rollup -c",
     "eslint": "eslint ./src",
     "test": "npm run build && mocha ./test/index.spec.js"
   },
