@@ -17,12 +17,21 @@ export default function (dom, options) {
   var clearSelect = opts.clearSelect
   var cut = opts.cut
 
-  // use document.execCommand `copy`
-  var selection = window.getSelection()
-  var range = window.document.createRange()
-  selection.removeAllRanges()
-  range.selectNode(dom)
-  selection.addRange(range)
+  var range
+  if (window.getSelection) {
+    var selection = window.getSelection()
+    range = window.document.createRange()
+    selection.removeAllRanges()
+    range.selectNode(dom)
+    selection.addRange(range)
+  } else if (document.body.createTextRange) {
+    /* ie */
+    range = document.body.createTextRange()
+    range.moveToElementText(dom)
+    range.select()
+  }
+
+  /* use document.execCommand `copy` */
   var success = window.document.execCommand('copy')
 
   if (clearSelect) selection.removeAllRanges()
