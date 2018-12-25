@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import license from 'rollup-plugin-license'
 import { uglify } from 'rollup-plugin-uglify'
 
 const formats = ['es', 'umd']
@@ -23,6 +24,11 @@ const conf = entry => ({
     name: 'index' === entry.name ? 'Copy' : entry.name,
   })),
   plugins: [
+    license({
+      banner: {
+        file: path.resolve(__dirname, 'LICENSE'),
+      },
+    }),
     (entry.needUglify !== false && uglify()),
   ],
   context: 'this',
