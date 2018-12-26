@@ -1,3 +1,4 @@
+import objectDeepCopy from './objectDeepCopy'
 import { expectedObjType } from './utils'
 
 function objectDeepMerge(target) {
@@ -17,7 +18,7 @@ function mixin(target, val, key) {
   if (expectedObjType(val) && expectedObjType(obj)) {
     objectDeepMerge(obj, val)
   } else {
-    target[key] = val
+    target[key] = typeof val === 'object' ? objectDeepCopy(val) : val
   }
 }
 

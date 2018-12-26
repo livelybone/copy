@@ -14,7 +14,7 @@ A module about clipboard copy, Object simple & deep copy
 https://github.com/livelybone/copy.git
 
 ## Demo
-https://github.com/livelybone/copy#readme
+https://livelybone.github.io/tool/copy
 
 ## Installation
 ```bash
