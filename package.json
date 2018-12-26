@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/copy",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "About clipboard copy, Object simple&deep copy",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",

@@ -24,12 +24,14 @@ const conf = entry => ({
     name: 'index' === entry.name ? 'Copy' : entry.name,
   })),
   plugins: [
-    license({
-      banner: {
-        file: path.resolve(__dirname, 'LICENSE'),
-      },
-    }),
     (entry.needUglify !== false && uglify()),
+    license({
+      banner: `Bundle of <%= pkg.name %>
+               Generated: <%= moment().format('YYYY-MM-DD') %>
+               Version: <%= pkg.version %>
+               License: <%= pkg.license %>
+               Author: <%= pkg.author %>`,
+    }),
   ],
   context: 'this',
 })
