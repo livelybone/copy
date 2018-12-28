@@ -10,6 +10,8 @@
 
 A module about clipboard copy, Object simple & deep copy
 
+The function `copyDom` can be use to copy image to clipboard
+
 ## repository
 https://github.com/livelybone/copy.git
 
