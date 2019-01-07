@@ -16,7 +16,7 @@ The function `copyDom` can be use to copy image to clipboard
 https://github.com/livelybone/copy.git
 
 ## Demo
-https://livelybone.github.io/tool/copy
+https://livelybone.github.io/tool/copy/
 
 ## Installation
 ```bash
