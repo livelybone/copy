@@ -12,6 +12,7 @@ export function expectedObjType(obj: Obj) {
   return typeof obj === 'object' &&
     !(
       obj === null ||
+      obj instanceof Promise ||
       obj instanceof Date ||
       obj instanceof Error ||
       obj instanceof RegExp
@@ -76,7 +77,7 @@ export function isCircularStructure(obj: Obj): CircularStructurePaths | null {
           .replace(/^\./, '')
         return true
       }
-      return typeof value === 'object'
+      return typeof value === 'object' && value !== null
         ? isCircular(value, cPath, parents)
         : false
     })

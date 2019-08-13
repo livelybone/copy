@@ -18,10 +18,10 @@ function copyFn<T extends Obj = Obj>(
     const parents = tParents ? [...tParents, target] : [target]
     const curParents = tCurParents ? [...tCurParents, result] : [result]
 
-    Object.keys(target).forEach(key => {
+    Object.keys(target).forEach((key: keyof T) => {
       const isCircular = circularStructureIndex(target[key], parents)
       if (isCircular) {
-        result[key] = curParents[isCircular.index]
+        result[key] = curParents[isCircular.index] as any
       } else {
         result[key] = copyFn(target[key], parents, curParents)
       }

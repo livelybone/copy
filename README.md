@@ -1,7 +1,7 @@
 # @livelybone/copy
 [![NPM Version](http://img.shields.io/npm/v/@livelybone/copy.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/copy)
 [![Download Month](http://img.shields.io/npm/dm/@livelybone/copy.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/copy)
-![gzip with dependencies: 1kb](https://img.shields.io/badge/gzip--with--dependencies-1kb-brightgreen.svg "gzip with dependencies: 1kb")
+![gzip with dependencies: 1.9kb](https://img.shields.io/badge/gzip--with--dependencies-1.9kb-brightgreen.svg "gzip with dependencies: 1.9kb")
 ![typescript](https://img.shields.io/badge/typescript-supported-blue.svg "typescript")
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
 
@@ -37,7 +37,6 @@ See in [index.d.ts](./index.d.ts)
 
 ## Import
 ```js
-// import all
 import {
   copyDom,
   copyText,

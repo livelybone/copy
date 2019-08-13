@@ -32,21 +32,38 @@ export interface Obj extends Object {
   [key: number]: any
 }
 
+/**
+ * @description Deep copy, has the ability to deal nested loop
+ * */
 declare function objectDeepCopy<T extends Obj = Obj>(obj: T): T
 
+/**
+ * @description Deep copy, cannot deal nested loop
+ * */
 declare function objectSimpleCopy(obj: Obj): any
 
-declare function objectDeepMerge(target: Obj, ...rest: Obj[]): Obj
+/**
+ * @description Deep merge, cannot deal nested loop
+ * @return The first parameter object which has been merged
+ * */
+declare function objectDeepMerge<T extends Obj = Obj>(
+  target: T,
+  ...rest: T[]
+): any
 
-declare function expectedObjType(obj: Obj): boolean
+export declare type ReferencedPath = string
+export declare type QuotePath = string
+export declare type CircularStructurePaths = [ReferencedPath, QuotePath]
 
-declare function newObj(target: Obj): {}
+/**
+ * @description Returns the start dimension of the nested loop
+ * */
+declare function isCircularStructure(obj: Obj): CircularStructurePaths | null
 
 export {
   copyDom,
   copyText,
-  expectedObjType,
-  newObj,
+  isCircularStructure,
   objectDeepCopy,
   objectDeepMerge,
   objectSimpleCopy,
