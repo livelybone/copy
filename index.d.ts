@@ -1,4 +1,28 @@
-export interface CopyDomOptions {
+interface Obj extends Object {
+  [key: string]: any
+
+  [key: number]: any
+}
+
+declare type UnexpectType =
+  | undefined
+  | null
+  | string
+  | number
+  | boolean
+  | Date
+  | Error
+  | RegExp
+  | FileList
+  | File
+  | Element
+  | Window
+  | Document
+declare type ReferencedPath = string
+declare type QuotePath = string
+declare type CircularStructurePaths = [ReferencedPath, QuotePath]
+
+interface CopyDomOptions {
   /**
    * Should clear selection after copy
    *
@@ -26,12 +50,6 @@ declare function copyDom(dom: Element, options?: CopyDomOptions): boolean
  * */
 declare function copyText(text: string): Promise<true>
 
-export interface Obj extends Object {
-  [key: string]: any
-
-  [key: number]: any
-}
-
 /**
  * @description Deep copy, has the ability to deal nested loop
  * */
@@ -51,16 +69,18 @@ declare function objectDeepMerge<T extends Obj = Obj>(
   ...rest: T[]
 ): any
 
-export declare type ReferencedPath = string
-export declare type QuotePath = string
-export declare type CircularStructurePaths = [ReferencedPath, QuotePath]
-
 /**
  * @description Returns the start dimension of the nested loop
  * */
 declare function isCircularStructure(obj: Obj): CircularStructurePaths | null
 
 export {
+  CircularStructurePaths,
+  CopyDomOptions,
+  Obj,
+  QuotePath,
+  ReferencedPath,
+  UnexpectType,
   copyDom,
   copyText,
   isCircularStructure,

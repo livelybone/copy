@@ -5,6 +5,8 @@ import objectSimpleCopy from './objectSimpleCopy'
 import objectDeepMerge from './objectDeepMerge'
 import { isCircularStructure } from './utils'
 
+export * from './types'
+
 export {
   copyDom,
   copyText,

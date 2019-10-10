@@ -4,16 +4,14 @@ import { expectedObjType, ExpectedObjType, isCircularStructure } from './utils'
 
 function merge(target: any, ...rest: any[]) {
   rest.forEach(obj => {
-    if (expectedObjType(obj)) {
-      Object.entries(obj).forEach(([key, val]: [string, any]) => {
-        const obj1 = target[key]
-        if (expectedObjType(val) && expectedObjType(obj1)) {
-          merge(obj1, val)
-        } else {
-          target[key] = typeof val === 'object' ? objectSimpleCopy(val) : val
-        }
-      })
-    }
+    Object.entries(obj).forEach(([key, val]: [string, any]) => {
+      const obj1 = target[key]
+      if (expectedObjType(val) && expectedObjType(obj1)) {
+        merge(obj1, val)
+      } else {
+        target[key] = typeof val === 'object' ? objectSimpleCopy(val) : val
+      }
+    })
   })
 
   return target

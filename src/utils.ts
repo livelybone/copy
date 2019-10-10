@@ -1,7 +1,7 @@
 /**
  * @description If param obj is expected that can be copied
  * */
-import { Obj } from './types'
+import { Obj, CircularStructurePaths } from './types'
 
 export enum ExpectedObjType {
   NormalObj = 'object',
@@ -46,10 +46,6 @@ export function circularStructureIndex(obj: Obj, tParents: Obj[]) {
   })
   return index !== undefined ? { index: +index } : undefined
 }
-
-type ReferencedPath = string
-type QuotePath = string
-type CircularStructurePaths = [ReferencedPath, QuotePath]
 
 /**
  * @description Returns the start dimension of the nested loop

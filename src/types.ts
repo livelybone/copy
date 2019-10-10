@@ -18,3 +18,22 @@ export type UnexpectType =
   | Element
   | Window
   | Document
+
+export type ReferencedPath = string
+export type QuotePath = string
+export type CircularStructurePaths = [ReferencedPath, QuotePath]
+
+export interface CopyDomOptions {
+  /**
+   * Should clear selection after copy
+   *
+   * Default to false
+   * */
+  clearSelect: boolean
+  /**
+   * Should cut the dom(like <input>) value after copy
+   *
+   * Default to false
+   * */
+  cut: boolean
+}

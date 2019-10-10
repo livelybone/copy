@@ -13,6 +13,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   'rules': {
+    "no-undef": "off",
     "no-nested-ternary": "off",
     "no-param-reassign": "off",
     "import/prefer-default-export": "off",

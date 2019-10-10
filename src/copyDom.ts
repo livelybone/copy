@@ -1,17 +1,4 @@
-interface CopyDomOptions {
-  /**
-   * Should clear selection after copy
-   *
-   * Default to false
-   * */
-  clearSelect: boolean
-  /**
-   * Should cut the dom(like <input>) value after copy
-   *
-   * Default to false
-   * */
-  cut: boolean
-}
+import { CopyDomOptions } from './types'
 
 /**
  * @param {Element} dom
