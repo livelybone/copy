@@ -58,6 +58,8 @@ export function isCircularStructure(obj: Obj): CircularStructurePaths | null {
     path: string[] = ['Object'],
     oParents?: Obj[],
   ): boolean => {
+    if (typeof object !== 'object' || object === null) return false
+
     const parents = oParents ? [...oParents, object] : [object]
 
     return Object.entries(object).some(([key, value]) => {
@@ -73,9 +75,7 @@ export function isCircularStructure(obj: Obj): CircularStructurePaths | null {
           .replace(/^\./, '')
         return true
       }
-      return typeof value === 'object' && value !== null
-        ? isCircular(value, cPath, parents)
-        : false
+      return isCircular(value, cPath, parents)
     })
   }
 
