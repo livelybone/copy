@@ -28,13 +28,13 @@ interface CopyDomOptions {
    *
    * Default to false
    * */
-  clearSelect: boolean
+  clearSelect?: boolean
   /**
    * Should cut the dom(like <input>) value after copy
    *
    * Default to false
    * */
-  cut: boolean
+  cut?: boolean
 }
 
 /**
