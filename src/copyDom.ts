@@ -13,7 +13,7 @@ export default function copyDom(
     clearSelect: false,
     cut: false,
   }
-  const opts = Object.assign({}, options, defaultObj)
+  const opts = Object.assign({}, defaultObj, options)
   const { clearSelect, cut } = opts
 
   let range
