@@ -9,21 +9,21 @@ export enum ExpectedObjType {
 }
 
 export function expectedObjType(obj: Obj) {
+  const unexpectedObjConstructors = [
+    typeof Promise !== 'undefined' && Promise,
+    typeof Date !== 'undefined' && Date,
+    typeof Error !== 'undefined' && Error,
+    typeof RegExp !== 'undefined' && RegExp,
+    typeof FileList !== 'undefined' && FileList,
+    typeof File !== 'undefined' && File,
+    typeof Element !== 'undefined' && Element,
+    typeof Window !== 'undefined' && Window,
+    typeof Document !== 'undefined' && Document,
+  ]
   return typeof obj === 'object' &&
     !(
       obj === null ||
-      obj instanceof Promise ||
-      obj instanceof Date ||
-      obj instanceof Error ||
-      obj instanceof RegExp
-    ) &&
-    !(
-      typeof window !== 'undefined' &&
-      (obj instanceof FileList ||
-        obj instanceof File ||
-        obj instanceof Element ||
-        obj instanceof Window ||
-        obj instanceof Document)
+      unexpectedObjConstructors.some(it => it && obj instanceof it)
     )
     ? obj instanceof Array
       ? ExpectedObjType.Array

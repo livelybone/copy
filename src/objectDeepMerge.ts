@@ -6,7 +6,7 @@ function merge(target: any, ...rest: any[]) {
   rest.forEach(obj => {
     Object.entries(obj).forEach(([key, val]: [string, any]) => {
       if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
-        return target;
+        return target
       }
       const obj1 = target[key]
       if (expectedObjType(val) && expectedObjType(obj1)) {

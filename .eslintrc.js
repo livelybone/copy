@@ -16,6 +16,8 @@ module.exports = {
     "no-undef": "off",
     "no-nested-ternary": "off",
     "no-param-reassign": "off",
+    "import/extensions": "off",
+    'consistent-return': 'off',
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     'prettier/prettier': 'error',
